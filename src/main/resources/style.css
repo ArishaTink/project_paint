@@ -1,0 +1,15 @@
+.icon-button {
+    -fx-graphic: url("images/eraser.png");
+    -fx-content-display: graphic-only;
+    -fx-padding: 8px;
+    -fx-background-radius: 4px;
+    -fx-background-color: #e0e0e0;
+}
+
+.icon-button:hover {
+    -fx-background-color: #d0d0d0;
+}
+
+.icon-button:pressed {
+    -fx-background-color: #c0c0c0;
+}
