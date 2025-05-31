@@ -7,14 +7,10 @@ public class Pen implements AbstractTool {
     private double size;
     private GraphicsContext gc;
 
-    public Pen(Color color, double size, GraphicsContext gc) {
+    public Pen(double size, GraphicsContext gc) {
         this.gc = gc;
         this.size = size;
         this.gc.setLineWidth(this.size);
-    }
-
-    public Pen(double size, GraphicsContext gc) {
-        this(Color.BLACK, size, gc);
     }
 
     public void drawOnMousePressed(double x, double y) {
@@ -32,5 +28,9 @@ public class Pen implements AbstractTool {
     public void setSize(double size) {
         this.size = size;
         gc.setLineWidth(size);
+    }
+
+    public double getSize() {
+        return size;
     }
 }

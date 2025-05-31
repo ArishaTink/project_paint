@@ -14,6 +14,8 @@ public class Eraser implements AbstractTool {
     }
 
     public void drawOnMousePressed(double x, double y) {
+        gc.setFill(Color.WHITE);
+        gc.setStroke(Color.WHITE);
         gc.beginPath();
         gc.moveTo(x, y);
         gc.fillOval(x - size / 2.,y - size / 2.,size, size);
@@ -28,5 +30,9 @@ public class Eraser implements AbstractTool {
     public void setSize(double size) {
         this.size = size;
         gc.setLineWidth(size);
+    }
+
+    public double getSize() {
+        return size;
     }
 }

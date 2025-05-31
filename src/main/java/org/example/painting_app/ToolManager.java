@@ -1,6 +1,7 @@
 package org.example.painting_app;
 
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.Slider;
 import javafx.scene.paint.Color;
 
 public class ToolManager {
@@ -10,6 +11,7 @@ public class ToolManager {
     private Eraser eraser;
     private AbstractTool activeTool;
     private Color color;
+    private Slider sizeSlider;
 
     public ToolManager(GraphicsContext gc) {
         this.gc = gc;
@@ -33,16 +35,22 @@ public class ToolManager {
 
     public void setColor(Color newColor) {
         color = newColor;
+        gc.setFill(color);
+        gc.setStroke(color);
+    }
+
+    public void setSize(double newSize) {
+        activeTool.setSize(newSize);
     }
 
     public void setActiveTool(AbstractTool newActiveTool) {
         activeTool = newActiveTool;
-        if (newActiveTool.getClass() == Eraser.class) {
-            gc.setFill(Color.WHITE);
-            gc.setStroke(Color.WHITE);
-        } else {
-            gc.setFill(color);
-            gc.setStroke(color);
-        }
+        gc.setFill(color);
+        gc.setStroke(color);
+        sizeSlider.setValue(activeTool.getSize());
+    }
+
+    public void setSizeSlider(Slider newSizeSlider) {
+        sizeSlider = newSizeSlider;
     }
 }

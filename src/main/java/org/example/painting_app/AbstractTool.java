@@ -9,4 +9,6 @@ public interface AbstractTool {
     void drawOnMouseDragged(double x, double y);
 
     void setSize(double size);
+
+    double getSize();
 }
