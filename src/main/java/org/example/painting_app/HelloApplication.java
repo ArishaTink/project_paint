@@ -16,8 +16,10 @@ public class HelloApplication extends Application {
 
     @Override
     public void start(Stage stage) {
-        Canvas canvas = new Canvas(600, 400);
+        Canvas canvas = new Canvas(500, 400);
         GraphicsContext gc = canvas.getGraphicsContext2D();
+        canvas.setLayoutX(150);
+        canvas.setLayoutY(50);
 
         toolManager = new ToolManager(gc);
 
@@ -33,7 +35,7 @@ public class HelloApplication extends Application {
         //gc.setStroke(new ImagePattern(brushTexture));
 
         Group root = new Group(canvas);
-        Scene scene = new Scene(root, 600, 400);
+        Scene scene = new Scene(root, 700, 500);
         scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
 
         createSliders(root);

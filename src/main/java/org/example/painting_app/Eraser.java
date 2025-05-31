@@ -6,6 +6,7 @@ import javafx.scene.paint.Color;
 public class Eraser implements AbstractTool {
     private double size;
     private GraphicsContext gc;
+    private double lastX, lastY;
 
     public Eraser(double size, GraphicsContext gc) {
         this.gc = gc;
@@ -16,15 +17,23 @@ public class Eraser implements AbstractTool {
     public void drawOnMousePressed(double x, double y) {
         gc.setFill(Color.WHITE);
         gc.setStroke(Color.WHITE);
-        gc.beginPath();
-        gc.moveTo(x, y);
+        lastX = x;
+        lastY = y;
         gc.fillOval(x - size / 2.,y - size / 2.,size, size);
     }
 
     public void drawOnMouseDragged(double x, double y) {
-        gc.lineTo(x, y);
-        gc.stroke();
-        gc.setLineWidth(size);
+        double distance = Math.hypot(x - lastX, y - lastY);
+
+        for (double i = 0; i <= distance; i++) {
+            double t = i / distance;
+            double currX = lastX + t * (x - lastX);
+            double currY = lastY + t * (y - lastY);
+            gc.fillOval(currX - size / 2.,currY - size / 2.,size, size);
+        }
+
+        lastX = x;
+        lastY = y;
     }
 
     public void setSize(double size) {
