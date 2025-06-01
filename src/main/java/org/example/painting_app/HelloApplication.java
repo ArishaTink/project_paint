@@ -8,8 +8,17 @@ import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.*;
+import javafx.scene.image.WritableImage;
 import javafx.scene.paint.Color;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+
+import javafx.embed.swing.SwingFXUtils;
+
+import javax.imageio.ImageIO;
+import java.awt.image.RenderedImage;
+import java.io.File;
+import java.io.IOException;
 
 public class HelloApplication extends Application {
     public static ToolManager toolManager;
@@ -41,6 +50,7 @@ public class HelloApplication extends Application {
         createSliders(root);
         createToolPicker(root);
         createColorPicker(root);
+        createSaver(root, canvas, stage);
 
         stage.setTitle("Paint <3");
         stage.setScene(scene);
@@ -137,6 +147,31 @@ public class HelloApplication extends Application {
         sizeSlider.valueProperty().addListener(new ChangeListener<Number>() {
             public void changed(ObservableValue<? extends Number> observableValue, Number oldValue, Number newValue) {
                 toolManager.setSize(newValue.doubleValue());
+            }
+        });
+    }
+
+    public static void createSaver(Group root, Canvas canvas, Stage stage) {
+        Button saveButton = new Button("Save");
+        root.getChildren().add(saveButton);
+        saveButton.setLayoutX(100);
+        saveButton.setLayoutY(100);
+
+        saveButton.setOnAction((e)->{
+            FileChooser savefile = new FileChooser();
+            savefile.setTitle("Save File");
+            savefile.getExtensionFilters().add(new FileChooser.ExtensionFilter("PNG Image", "*.png"));
+            File file = savefile.showSaveDialog(stage);
+
+            if (file != null) {
+                try {
+                    WritableImage writableImage = new WritableImage(500, 400);
+                    canvas.snapshot(null, writableImage);
+                    RenderedImage renderedImage = SwingFXUtils.fromFXImage(writableImage, null);
+                    ImageIO.write(renderedImage, "png", file);
+                } catch (IOException ex) {
+                    System.out.println("Error!");
+                }
             }
         });
     }
