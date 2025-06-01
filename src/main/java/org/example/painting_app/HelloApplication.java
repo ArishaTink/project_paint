@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.image.WritableImage;
 import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
@@ -51,6 +52,7 @@ public class HelloApplication extends Application {
         createToolPicker(root);
         createColorPicker(root);
         createSaver(root, canvas, stage);
+        createUploader(root, gc, stage);
 
         stage.setTitle("Paint <3");
         stage.setScene(scene);
@@ -158,10 +160,10 @@ public class HelloApplication extends Application {
         saveButton.setLayoutY(100);
 
         saveButton.setOnAction((e)->{
-            FileChooser savefile = new FileChooser();
-            savefile.setTitle("Save File");
-            savefile.getExtensionFilters().add(new FileChooser.ExtensionFilter("PNG Image", "*.png"));
-            File file = savefile.showSaveDialog(stage);
+            FileChooser fileChooser = new FileChooser();
+            fileChooser.setTitle("Save File");
+            fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("PNG Image", "*.png"));
+            File file = fileChooser.showSaveDialog(stage);
 
             if (file != null) {
                 try {
@@ -172,6 +174,25 @@ public class HelloApplication extends Application {
                 } catch (IOException ex) {
                     System.out.println("Error!");
                 }
+            }
+        });
+    }
+
+    public static void createUploader(Group root, GraphicsContext gc, Stage stage) {
+        Button uploadButton = new Button("Upload");
+        root.getChildren().add(uploadButton);
+        uploadButton.setLayoutX(150);
+        uploadButton.setLayoutY(150);
+
+        uploadButton.setOnAction((e)->{
+            FileChooser fileChooser = new FileChooser();
+            fileChooser.setTitle("Upload File");
+            fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg", "*.gif"));
+            File file = fileChooser.showSaveDialog(stage);
+
+            if (file != null) {
+                Image image = new Image(file.toURI().toString());
+                gc.drawImage(image, 0, 0, 500, 400);
             }
         });
     }
