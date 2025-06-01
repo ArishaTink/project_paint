@@ -1,5 +1,6 @@
 package org.example.painting_app;
 
+import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Slider;
 import javafx.scene.paint.Color;
@@ -9,14 +10,18 @@ public class ToolManager {
 
     private Pen pen;
     private Eraser eraser;
+    private SoftBrush brush;
+    private Rectangle rectangle;
     private AbstractTool activeTool;
     private Color color;
     private Slider sizeSlider;
 
-    public ToolManager(GraphicsContext gc) {
-        this.gc = gc;
+    public ToolManager(Canvas canvas) {
+        this.gc = canvas.getGraphicsContext2D();
         pen = new Pen(3, gc);
         eraser = new Eraser(3, gc);
+        brush = new SoftBrush(3, gc);
+        rectangle = new Rectangle(3, canvas);
         activeTool = pen;
         color = Color.BLACK;
     }
@@ -28,6 +33,12 @@ public class ToolManager {
     public Eraser getEraser() {
         return eraser;
     }
+
+    public Rectangle getRectangle() {
+        return rectangle;
+    }
+
+    public SoftBrush getBrush() { return brush; }
 
     public AbstractTool getActiveTool(){
         return activeTool;

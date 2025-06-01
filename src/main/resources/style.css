@@ -1,15 +1,211 @@
-.icon-button {
-    -fx-graphic: url("images/eraser.png");
-    -fx-content-display: graphic-only;
-    -fx-padding: 8px;
-    -fx-background-radius: 4px;
-    -fx-background-color: #e0e0e0;
+.root {
+    -fx-background-color: yellow;
 }
 
-.icon-button:hover {
-    -fx-background-color: #d0d0d0;
+.red-button {
+     -fx-background-color: transparent;
+     -fx-background-image: url("images/colourButtons/red_fisch.png");
+     -fx-background-size: 100% 100%;
+     -fx-background-repeat: no-repeat;
+     -fx-pref-width: 50px;
+     -fx-pref-height: 50px;
+}
+.red-button:hover {
+    -fx-background-image: url("images/colourButtons/red_pickme_fisch.png");
+}
+.red-button:selected {
+    -fx-background-image: url("images/colourButtons/red_pickme_happy_fisch.png");
+}
+.red-button .radio {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+    -fx-shape: "";
+    -fx-opacity: 0;
 }
 
-.icon-button:pressed {
-    -fx-background-color: #c0c0c0;
+.orange-button {
+     -fx-background-color: transparent;
+     -fx-background-image: url("images/colourButtons/orange_fisch.png");
+     -fx-background-size: 100% 100%;
+     -fx-background-repeat: no-repeat;
+     -fx-pref-width: 50px;
+     -fx-pref-height: 50px;
+}
+.orange-button:hover {
+    -fx-background-image: url("images/colourButtons/orange_pickme_fisch.png");
+}
+.orange-button:selected {
+    -fx-background-image: url("images/colourButtons/orange_pickme_happy_fisch.png");
+}
+.orange-button .radio {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+    -fx-shape: "";
+    -fx-opacity: 0;
+}
+
+
+.yellow-button {
+     -fx-background-color: transparent;
+     -fx-background-image: url("images/colourButtons/yellow_fisch.png");
+     -fx-background-size: 100% 100%;
+     -fx-background-repeat: no-repeat;
+     -fx-pref-width: 50px;
+     -fx-pref-height: 50px;
+}
+.yellow-button:hover {
+    -fx-background-image: url("images/colourButtons/yellow_pickme_fisch.png");
+}
+.yellow-button:selected {
+    -fx-background-image: url("images/colourButtons/yellow_pickme_happy_fisch.png");
+}
+.yellow-button .radio {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+    -fx-shape: "";
+    -fx-opacity: 0;
+}
+
+
+.green-button {
+     -fx-background-color: transparent;
+     -fx-background-image: url("images/colourButtons/green_fisch.png");
+     -fx-background-size: 100% 100%;
+     -fx-background-repeat: no-repeat;
+     -fx-pref-width: 50px;
+     -fx-pref-height: 50px;
+}
+.green-button:hover {
+    -fx-background-image: url("images/colourButtons/green_pickme_fisch.png");
+}
+.green-button:selected {
+    -fx-background-image: url("images/colourButtons/green_pickme_happy_fisch.png");
+}
+.green-button .radio {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+    -fx-shape: "";
+    -fx-opacity: 0;
+}
+
+
+.blue-button {
+     -fx-background-color: transparent;
+     -fx-background-image: url("images/colourButtons/blue_fisch.png");
+     -fx-background-size: 100% 100%;
+     -fx-background-repeat: no-repeat;
+     -fx-pref-width: 50px;
+     -fx-pref-height: 50px;
+}
+.blue-button:hover {
+    -fx-background-image: url("images/colourButtons/blue_pickme_fisch.png");
+}
+.blue-button:selected {
+    -fx-background-image: url("images/colourButtons/blue_pickme_happy_fisch.png");
+}
+.blue-button .radio {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+    -fx-shape: "";
+    -fx-opacity: 0;
+}
+
+
+.purple-button {
+     -fx-background-color: transparent;
+     -fx-background-image: url("images/colourButtons/purple_fisch.png");
+     -fx-background-size: 100% 100%;
+     -fx-background-repeat: no-repeat;
+     -fx-pref-width: 50px;
+     -fx-pref-height: 50px;
+}
+.purple-button:hover {
+    -fx-background-image: url("images/colourButtons/purple_pickme_fisch.png");
+}
+.purple-button:selected {
+    -fx-background-image: url("images/colourButtons/purple_pickme_happy_fisch.png");
+}
+.purple-button .radio {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+    -fx-shape: "";
+    -fx-opacity: 0;
+}
+
+
+.pink-button {
+     -fx-background-color: transparent;
+     -fx-background-image: url("images/colourButtons/pink_fisch.png");
+     -fx-background-size: 100% 100%;
+     -fx-background-repeat: no-repeat;
+     -fx-pref-width: 50px;
+     -fx-pref-height: 50px;
+}
+.pink-button:hover {
+    -fx-background-image: url("images/colourButtons/pink_pickme_fisch.png");
+}
+.pink-button:selected {
+    -fx-background-image: url("images/colourButtons/pink_pickme_happy_fisch.png");
+}
+.pink-button .radio {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+    -fx-shape: "";
+    -fx-opacity: 0;
+}
+
+
+.black-button {
+     -fx-background-color: transparent;
+     -fx-background-image: url("images/colourButtons/black_fisch.png");
+     -fx-background-size: 100% 100%;
+     -fx-background-repeat: no-repeat;
+     -fx-pref-width: 50px;
+     -fx-pref-height: 50px;
+}
+.black-button:hover {
+    -fx-background-image: url("images/colourButtons/black_pickme_fisch.png");
+}
+.black-button:selected {
+    -fx-background-image: url("images/colourButtons/black_pickme_happy_fisch.png");
+}
+.black-button .radio {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+    -fx-shape: "";
+    -fx-opacity: 0;
+}
+
+ .slider {
+    -fx-orientation: vertical;
+    -fx-pref-height: 200px;
+    -fx-pref-width: 20px;
+}
+
+
+.slider .track {
+    -fx-background-color: linear-gradient(to bottom,
+        #fceaff,
+        #e4f1ff,
+        #e0fff4,
+        #fffbd9,
+        #ffe8e8
+    );
+    -fx-background-radius: 10;
+    -fx-padding: 0.25em;
+}
+.slider .thumb {
+    -fx-background-color: white;
+    -fx-background-radius: 10;
+    -fx-effect: dropshadow(one-pass-box, rgba(0, 0, 0, 0.2), 2, 0, 0, 1);
+    -fx-border-color: #ccc;
+    -fx-border-radius: 10;
 }
