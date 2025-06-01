@@ -32,7 +32,7 @@ public class HelloApplication extends Application {
     public void start(Stage stage) {
         Canvas canvas = new Canvas(500, 400);
         GraphicsContext gc = canvas.getGraphicsContext2D();
-        canvas.setLayoutX(150);
+        canvas.setLayoutX(165);
         canvas.setLayoutY(50);
         gc.setFill(Color.WHITE);
         gc.fillRect(0,0,canvas.getWidth(), canvas.getHeight());
@@ -50,13 +50,13 @@ public class HelloApplication extends Application {
         //Image brushTexture = new Image("C:/Users/dixxa/Desktop/java programms/painting_app/src/main/resources/images/eraser.png");
         //gc.setStroke(new ImagePattern(brushTexture));
 
-        Image bgImage = new Image(HelloApplication.class.getResource("/images/background.jpg").toExternalForm());
+        Image bgImage = new Image(HelloApplication.class.getResource("/images/new_project.png").toExternalForm());
         ImageView bgView = new ImageView(bgImage);
         bgView.setMouseTransparent(true);
 
         Image frameImage = new Image(HelloApplication.class.getResource("/images/frame.png").toExternalForm());
         ImageView frameView = new ImageView(frameImage);
-        frameView.setX(125);
+        frameView.setX(140);
         frameView.setY(25);
         frameView.setMouseTransparent(true);
 
@@ -64,7 +64,7 @@ public class HelloApplication extends Application {
         Scene scene = new Scene(root, 700, 500);
         scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
 
-        Image cursorImage = new Image(getClass().getResource("/images/cursor.png").toExternalForm());
+        Image cursorImage = new Image(getClass().getResource("/images/cursor.png").toExternalForm(), 64, 64, true, true);
         scene.setCursor(new ImageCursor(cursorImage,23,5));
 
         createSliders(root);
@@ -74,6 +74,7 @@ public class HelloApplication extends Application {
         createUploader(root, gc, stage);
 
         stage.setTitle("Paint <3");
+        stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
     }
@@ -81,9 +82,10 @@ public class HelloApplication extends Application {
     public static void createToolPicker(Group root) {
         ToggleGroup group = new ToggleGroup();
 
-        RadioButton penButton = new RadioButton("Pen");
+        RadioButton penButton = new RadioButton();
+        penButton.getStyleClass().add("pen-button");
         penButton.setLayoutX(10);
-        penButton.setLayoutY(180);
+        penButton.setLayoutY(200);
         root.getChildren().add(penButton);
 
         penButton.selectedProperty().addListener((obs, oldVal, newVal) -> {
@@ -95,9 +97,10 @@ public class HelloApplication extends Application {
         penButton.setToggleGroup(group);
         penButton.setSelected(true);
 
-        RadioButton eraserButton = new RadioButton("Eraser");
+        RadioButton eraserButton = new RadioButton();
+        eraserButton.getStyleClass().add("eraser-button");
         eraserButton.setLayoutX(10);
-        eraserButton.setLayoutY(210);
+        eraserButton.setLayoutY(250);
         root.getChildren().add(eraserButton);
 
         eraserButton.selectedProperty().addListener((obs, oldVal, newVal) -> {
@@ -108,9 +111,10 @@ public class HelloApplication extends Application {
 
         eraserButton.setToggleGroup(group);
 
-        RadioButton rectangleButton = new RadioButton("Rectangle");
+        RadioButton rectangleButton = new RadioButton();
+        rectangleButton.getStyleClass().add("rect-button");
         rectangleButton.setLayoutX(10);
-        rectangleButton.setLayoutY(250);
+        rectangleButton.setLayoutY(345);
         root.getChildren().add(rectangleButton);
 
         rectangleButton.selectedProperty().addListener((obs, oldVal, newVal) -> {
@@ -121,9 +125,10 @@ public class HelloApplication extends Application {
 
         rectangleButton.setToggleGroup(group);
 
-        RadioButton softBrushButton = new RadioButton("Soft Brush");
+        RadioButton softBrushButton = new RadioButton();
+        softBrushButton.getStyleClass().add("brush-button");
         softBrushButton.setLayoutX(10);
-        softBrushButton.setLayoutY(240);
+        softBrushButton.setLayoutY(300);
         root.getChildren().add(softBrushButton);
 
         softBrushButton.selectedProperty().addListener((obs, oldVal, newVal) -> {
@@ -151,16 +156,16 @@ public class HelloApplication extends Application {
         greenButton.getStyleClass().add("green-button");
         root.getChildren().add(greenButton);
         greenButton.setOnAction(e -> toolManager.setColor(Color.rgb(145,202,87)));
-        greenButton.setLayoutX(40);
-        greenButton.setLayoutY(50);
+        greenButton.setLayoutX(65);
+        greenButton.setLayoutY(60);
         greenButton.setToggleGroup(group);
 
         RadioButton blackButton = new RadioButton();
         blackButton.getStyleClass().add("black-button");
         root.getChildren().add(blackButton);
         blackButton.setOnAction(e -> toolManager.setColor(Color.rgb(54,54,54)));
-        blackButton.setLayoutX(40);
-        blackButton.setLayoutY(120);
+        blackButton.setLayoutX(65);
+        blackButton.setLayoutY(150);
         blackButton.setToggleGroup(group);
         blackButton.setSelected(true);
 
@@ -169,7 +174,7 @@ public class HelloApplication extends Application {
         root.getChildren().add(blueButton);
         blueButton.setOnAction(e -> toolManager.setColor(Color.rgb(101,192,230)));
         blueButton.setLayoutX(10);
-        blueButton.setLayoutY(85);
+        blueButton.setLayoutY(105);
         blueButton.setToggleGroup(group);
 
         RadioButton yellowButton = new RadioButton();
@@ -177,7 +182,7 @@ public class HelloApplication extends Application {
         root.getChildren().add(yellowButton);
         yellowButton.setOnAction(e -> toolManager.setColor(Color.rgb(250,242,96)));
         yellowButton.setLayoutX(10);
-        yellowButton.setLayoutY(50);
+        yellowButton.setLayoutY(60);
         yellowButton.setToggleGroup(group);
 
         RadioButton pinkButton = new RadioButton();
@@ -185,28 +190,30 @@ public class HelloApplication extends Application {
         root.getChildren().add(pinkButton);
         pinkButton.setOnAction(e -> toolManager.setColor(Color.rgb(255,169,186)));
         pinkButton.setLayoutX(10);
-        pinkButton.setLayoutY(120);
+        pinkButton.setLayoutY(150);
         pinkButton.setToggleGroup(group);
 
         RadioButton purpleButton = new RadioButton();
         purpleButton.getStyleClass().add("purple-button");
         root.getChildren().add(purpleButton);
         purpleButton.setOnAction(e -> toolManager.setColor(Color.rgb(170,125,224)));
-        purpleButton.setLayoutX(40);
-        purpleButton.setLayoutY(85);
+        purpleButton.setLayoutX(65);
+        purpleButton.setLayoutY(105);
         purpleButton.setToggleGroup(group);
 
         RadioButton orangeButton = new RadioButton();
         orangeButton.getStyleClass().add("orange-button");
         root.getChildren().add(orangeButton);
         orangeButton.setOnAction(e -> toolManager.setColor(Color.rgb(252,181,92)));
-        orangeButton.setLayoutX(40);
+        orangeButton.setLayoutX(65);
         orangeButton.setLayoutY(15);
         orangeButton.setToggleGroup(group);
     }
 
     public static void createSliders(Group root) {
         Slider sizeSlider = new Slider(0, 100, 10);
+        sizeSlider.setLayoutX(105);
+        sizeSlider.setLayoutY(210);
         sizeSlider.setOrientation(Orientation.VERTICAL);
         root.getChildren().add(sizeSlider);
         toolManager.setSizeSlider(sizeSlider);
@@ -220,10 +227,11 @@ public class HelloApplication extends Application {
     }
 
     public static void createSaver(Group root, Canvas canvas, Stage stage) {
-        Button saveButton = new Button("Save");
+        Button saveButton = new Button();
+        saveButton.getStyleClass().add("save-button");
         root.getChildren().add(saveButton);
-        saveButton.setLayoutX(100);
-        saveButton.setLayoutY(100);
+        saveButton.setLayoutX(25);
+        saveButton.setLayoutY(400);
 
         saveButton.setOnAction((e)->{
             FileChooser fileChooser = new FileChooser();
@@ -245,10 +253,11 @@ public class HelloApplication extends Application {
     }
 
     public static void createUploader(Group root, GraphicsContext gc, Stage stage) {
-        Button uploadButton = new Button("Upload");
+        Button uploadButton = new Button();
+        uploadButton.getStyleClass().add("upload-button");
         root.getChildren().add(uploadButton);
-        uploadButton.setLayoutX(150);
-        uploadButton.setLayoutY(150);
+        uploadButton.setLayoutX(25);
+        uploadButton.setLayoutY(450);
 
         uploadButton.setOnAction((e)->{
             FileChooser fileChooser = new FileChooser();
